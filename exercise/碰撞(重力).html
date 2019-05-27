@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#ball {
+				width: 40px;
+				height: 40px;
+				background: blue;
+				border-radius: 20px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var oBall = document.getElementById('ball');
+				var time = null;
+				document.onclick = function() {
+
+					//速度
+					var speedX = 8;
+					var speedY = 8;
+					var timer=null;
+					//物體大小
+					var viewW = oBall.offsetWidth;
+					var viewH = oBall.offsetHeight;
+
+					//開啟時鐘
+					timer = setInterval(function(){
+						
+						//添加重力
+						speedY +=1.3;
+						
+						
+						//窗口大小
+						var screenW = document.body.clientWidth || document.Element.clientWidth;
+						var screenH = document.body.clientHeight || document.documentElement.clientHeight;
+
+						//預先將位置計算好
+						var offsetTop = oBall.offsetTop + speedY;
+						var offsetLeft = oBall.offsetLeft + speedX;
+
+						//垂直方向
+						if(offsetTop >= screenH - viewH) { //觸碰到底部
+							speedY *= -0.9; //垂直方向、速度減小，改變方向
+							speedX *= 0.9
+							offsetTop = screenH - viewH;
+						} else if(offsetTop <= 0) { //觸碰到頂部
+							speedY *= -0.9;
+							speedX *= 0.9;
+							offsetTop = 0;
+						}
+
+						//水平方向
+						if(offsetLeft >= screenW - viewW) { //觸碰到右邊
+							speedX *= -0.9;
+							speedY *= 0.9;
+							offsetLeft = screenW - viewW;
+						} else if(offsetLeft <= 0) { // 触碰到左邊
+							speedX *= -0.9;
+							speedY *= 0.9;
+							offsetLeft = 0;
+						}
+						
+						if (Math.abs(speedX) < 1){
+							speedX = 0;
+						} 
+						if(Math.abs(speedY) < 1){
+							speedY = 0;
+						}
+						
+						
+						if (speedX == 0 && speedY == 0){	// 停止
+							clearInterval(timer)
+						} else { 	// 运动
+							oBall.style.left = offsetLeft +'px';
+							oBall.style.top = offsetTop + 'px';
+						}
+						
+					}, 50)
+
+				}
+
+			}
+		</script>
+
+	</head>
+
+	<body>
+		<div id="ball"></div>
+	</body>
+
+</html>

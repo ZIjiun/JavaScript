@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			#box1,#box2,#box3,#box4,#box5{
+				width: 150px;
+				height: 100px;
+				background: red;
+				margin: 30px;
+				color: white;	
+			} 
+			
+			#box4{
+				position: absolute;
+				left: 0;
+				top: 500px;	
+			}
+			
+			#box5{
+				position: absolute;
+				left: 0;
+				top: 620px;	
+			}
+		
+		</style>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oBox1 = document.getElementById('box1'); 
+				var oBox2 = document.getElementById('box2');
+				var oBox3 = document.getElementById('box3');
+				var oBox4 = document.getElementById('box4');
+				var oBox5 = document.getElementById('box5');
+				
+				oBox1.onmouseover = function(){
+					startMove(this,'width',300);
+				}
+				
+				oBox1.onmouseout = function(){
+					startMove(this,'width',150);
+				}
+				
+				oBox2.onmouseover = function(){
+					startMove(this,'height',300);
+				}
+				
+				oBox2.onmouseout = function(){
+					startMove(this,'height',100);
+				}
+				
+				oBox3.onmouseover = function(){
+					startMove(this,'fontSize',30);
+				}
+				
+				oBox3.onmouseout = function(){
+					startMove(this,'fontSize',16);
+				}
+				
+				oBox4.onclick = function(){
+					console.log('left');
+					startMove(this,'left',300);
+				}
+				
+				oBox5.onclick = function(){
+					console.log('top');
+					startMove(this,'top',800);
+				}
+								
+				/*
+				 * obj: 操作對象
+				 * att: 操作屬性
+				 * target:目標點
+				 */
+				
+				function startMove(obj, att, target){
+					clearInterval(obj.timer);
+					
+					//速度
+					var speed = 0;
+					//操作的屬性
+					var currentValue = 0;
+					
+					obj.timer = setInterval(function(){
+						
+						//1.當前值
+						currentValue = getStyle(obj, att)
+						
+						//2.速度
+						speed = (target - currentValue) / 7;
+						speed = speed>0 ? Math.ceil(speed): Math.floor(speed);  
+						
+						//3.運動處理
+						currentValue += speed;
+						if(currentValue == target){
+							clearInterval(obj.timer);
+						}else{
+							obj.style[att]= currentValue + 'px';
+						}
+						
+					},30 )
+					
+				}
+				
+				function getStyle(obj,att){
+					return parseInt(window.getComputedStyle ? getComputedStyle(obj)[att] : obj.currentStyle[att])
+				}
+				
+			}
+		</script>
+		
+	</head>
+	
+	<body>
+		<div id="box1">寬度變化</div>
+		<div id="box2">高度變化</div>
+		<div id="box3">字體大小變化</div>
+		<div id="box4">left變化</div>
+		<div id="box5">top變化</div>
+		
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			span{
+				color:white;		
+				background: blue;
+			}
+		</style>
+	
+	</head>
+	<body>
+		
+		<input type="text" id='search1'/>
+		<input type="button" id="search2" value='查找' />
+		<br />	
+		<input type="text" id='replace1'/>
+		<input type="button" id="replace2" value='替換' />
+	
+		<p id = 'content'>
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+			每天一句: 在你想要放棄的那一刻，想想為什麼當初走到了這裡-----科比
+		</p>
+	
+		<script>
+			
+			var text1 = document.getElementById('search1');
+			var oBt1 = document.getElementById('search2')
+			var text2 = document.getElementById('replace1');
+			var oBt2 = document.getElementById('replace2'); 
+			var oContent = document.getElementById('content');
+			var content = oContent.innerHTML;
+			
+//			console.log(oContent);
+						
+			oBt1.onclick = function(){	
+				var searchValue = text1.value;
+				
+				// 恢复原样
+				oContent.innerHTML = content;
+				
+				// 没输入任何内容
+				if(!searchValue) return;
+				
+				// 用元素包裹住searchValue
+				var str = '<span>' + searchValue + '</span>';
+				oContent.innerHTML = oContent.innerHTML.split(searchValue).join(str);
+			
+			}
+			
+			oBt2.onclick = function(){
+				
+				var oldStr = text1.value;
+				var newStr = text2.value;
+				
+				if(!oldStr || !newStr) return;
+				oContent.innerHTML = content.split(oldStr).join(newStr);
+				
+			}
+			
+		</script>
+	</body>
+</html>

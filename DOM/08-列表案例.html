@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 320px;
+				height: 568px;
+				border: 1px solid gray;
+				overflow: auto;
+			}
+			
+			
+			.section{
+				width: 310px;
+				margin: 5px;
+				border-bottom: 1px solid gray;
+			}
+			
+			.section a{
+				text-decoration: none;
+			}
+			
+		</style>
+		<script type="text/javascript" src="../code/zyz.js"></script>
+		</script>
+		<script type="text/javascript">
+			window.onload= function(){
+				var oBox = document.getElementById('box');
+				var oSection = null;
+				var oName = null;
+				var oHead= null;
+				var oContent = null;
+				var oText = null;
+				
+				for(var i=0; i<10; i++){
+					
+					if(i == 3){ //插入廣告
+						var oAd = document.createElement('div');
+						oAd.className = 'section';
+						oBox.appendChild(oAd);
+					
+						oName = document.createElement('a');
+						oName.href='#';
+						oAd.appendChild(oName);
+						
+						oText = document.createTextNode('超低價');
+						oName.appendChild(oText);
+						
+						oContent = document.createElement('p');
+						oContent.innerHTML='走過路過千萬不要錯過，跳樓大拍賣';
+						
+						oAd.appendChild(oContent);
+						
+					}
+					
+					oSection=document.createElement('div');
+					oSection.className = 'section';
+					oBox.appendChild(oSection);
+					
+					oName = document.createElement('a');
+					oName.href='#';
+					oSection.appendChild(oName);
+					
+					oHead = document.createElement('img');
+					oHead.src = 'img/icon_0' + i + '.png'; 
+					oName.appendChild(oHead);
+					
+					oText = document.createTextNode(i + 1 + '、應用程式');
+					oName.appendChild(oText);
+					
+					oContent = document.createElement('p');
+					oContent.innerHTML='小程序带动就业 104 万 / 马化腾回应「腾讯没有梦想」实为 P 图';
+					
+					oSection.appendChild(oContent);
+				}
+				
+				setInterval(function(){
+							oBox.removeChild(oAd);
+						},5000);
+			}
+			
+			
+		</script>
+		
+		
+	</head>
+	<body>
+		<div id="box">
+			<!--<div class="section">
+				<a href="#">
+					<img src="img/icon_00.png"/>
+					酷跑
+				</a>
+				
+				<p>
+					小程序带动就业 104 万 / 马化腾回应「腾讯没有梦想」实为 P 图
+				</p>
+			</div>-->
+		</div>		
+		
+		
+	</body>
+</html>

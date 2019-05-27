@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#box{
+				width: 300px;
+				margin: 50px auto;
+			}
+			#text{
+				width: 298px;
+				height: 30px;
+				border: 1px solid gray;
+				font-size: 24px;
+			}
+			#list{
+				width: 298px;
+				border: 1px solid gray;
+				list-style: none;
+				border-top: 0;
+				display: none;
+			}
+			#list li{
+				line-height: 30px;
+			}
+			#list li a{
+				text-decoration: none;
+				color: black;
+				display: block;
+			}
+			#list li a:hover{
+				background: rgba(1,1,1,0.3);
+			}
+		</style>
+		<script type="text/javascript">
+			function jQuery11020009021086146109747_1543139525157(data){
+				var oList = document.getElementById('list');
+				//清空
+				oList.innerHTML = '';
+				
+				//添加
+				var dataArr = data.s;
+				
+				for(var i =0; i<dataArr.length; i++){
+					var oLi = document.createElement('li');
+					oList.appendChild(oLi);
+					
+					var oA = document.createElement('a');
+					oA.innerHTML = dataArr[i];
+					oA.href = 'https://www.baidu.com/s?wd=' + dataArr[i];
+					oLi.appendChild(oA);
+				}
+			}
+		</script>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oText = document.getElementById('text');
+				var oList= document.getElementById('list');
+				
+				oText.onkeyup = function(){
+					if(this.value.length){
+						if(this.value.length){
+							//添加script標籤
+							var oScript = document.createElement('script');
+							oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+ this.value + '&cb=jQuery11020009021086146109747_1543139525157';
+							document.head.appendChild(oScript);
+							
+							//顯示
+							oList.style.display = 'block';
+						}else{
+							oList.style.display = 'none';
+						}
+					}
+				}
+				
+			}
+		</script>
+		
+		
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" name="text" id="text" value="" />
+			<ul id="list">
+				<!--<li><a href="#"> hello </a></li>
+				<li><a href="#"> hello </a></li>
+				<li><a href="#"> hello </a></li>-->
+			</ul>
+		</div>
+		
+	</body>
+</html>

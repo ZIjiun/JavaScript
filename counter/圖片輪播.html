@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				display: block;
+				border: 0;
+			}
+			#box{
+				width: 600px;
+				margin: 50px auto;
+				position: relative;
+			}
+			#pageView{
+				position: absolute;
+				bottom: 10px;
+				left: 0;
+				text-align: center;
+				/*background: red;*/
+				width: 100%;
+				height: 14px;
+			}
+			
+			#pageView i{
+				width: 10px;
+				height: 10px;
+				border: 2px solid gray;
+				border-radius: 6px ;
+				display: inline-block;
+			}
+			
+			#pageView .active{
+				background: black;
+				border-color: black;
+			}
+			
+		</style>
+		
+		<script type="text/javascript" src="zijun.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				var oImg = $('img');
+				var aPage = document.getElementsByTagName('i');
+				var timer = null;
+				var index = 0;
+				var imageName = '';
+				var currentPage=0;
+				
+				//調用開啟時鐘
+				startTimer()
+				
+				//頁碼點擊操作
+				for(var i=0; i<aPage.length; i++){
+					
+					//紀錄哪個下標點擊
+					aPage[i].index = i;
+					
+					aPage[i].onclick= function(){
+						//關閉時鐘
+						stopTimer();
+						
+						//根據下標切換
+						index = this.index;
+						changeView();
+						
+						//開啟時鐘
+						startTimer();
+					}
+				}	
+								
+				//開啟時鐘
+				function startTimer(){
+					if(timer == null){
+						timer = setInterval(upDate, 2000);
+					}
+				}
+				
+				//關閉時鐘
+				function stopTimer(){
+					clearInterval(timer);
+					timer = null;
+				}
+				
+				function upDate(){
+					index++;
+					changeView();
+				}
+				
+				function changeView(){
+					if(index > 4){
+						index = 0;
+					}
+					
+					//改變圖片	
+					imageName = 'img1/img_0'+ (index+1) + '.png';
+					oImg.src = imageName;
+					
+					//改變頁碼
+					aPage[currentPage].className = '';
+					currentPage = index;
+					aPage[currentPage].className = 'active';
+				}
+				
+				
+			});
+		</script>
+		
+	</head>
+	<body>
+		<div id="box">
+			<img src="img1/img_01.png" id="img"/>
+			<p id="pageView">
+				<i class="active"></i>
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+			</p>
+		</div>
+		
+		
+	</body>
+</html>

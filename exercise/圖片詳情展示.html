@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul {
+				width: 920px;
+				height: 170px;
+			}
+			
+			li {
+				width: 300px;
+				height: 170px;
+				position: relative;
+				list-style: none;
+				float: left;
+			}
+			
+			li p {
+				width: 290px;
+				position: absolute;
+				left: 5px;
+				bottom: 5px;
+				background: gray;
+				color: white;
+				font-size: 12px;
+				text-align: center;
+				
+				/*預設隱藏*/
+				height: 0;
+				overflow: hidden;
+			}
+		</style>
+
+		<script type="text/javascript" src="zijun.js"></script>
+		<script type="text/javascript" src="move.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var aLi = document.getElementsByTagName('li');
+
+				for(var i = 0; i < aLi.length; i++) {
+					aLi[i].onmouseover = function() {
+						var temp = this.getElementsByTagName('p')[0];
+						startMove(temp, 'height', 50);
+					}
+
+					aLi[i].onmouseout = function() {
+						var temp = this.getElementsByTagName('p')[0];
+						startMove(temp, 'height', 0);
+					}
+
+				}
+			})
+		</script>
+
+	</head>
+
+	<body>
+		<ul>
+			<li>
+				<a href="#">
+					<img src="img/b1.jpg" />
+					<p>
+						圖片展示1
+					</p>
+				</a>
+
+			</li>
+			<li style="margin: 0 10px;">
+				<a href="#">
+					<img src="img/b2.jpg" />
+					<p>
+						圖片展示2
+					</p>
+				</a>
+
+			</li>
+			<li>
+				<a href="#">
+					<img src="img/b3.jpg" />
+					<p>
+						圖片展示3
+					</p>
+				</a>
+
+			</li>
+
+		</ul>
+	</body>
+
+</html>

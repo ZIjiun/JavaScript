@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			.box{
+				width: 320px;
+				height: 568px;
+				margin: 50px auto;
+				position: relative;
+			}
+			
+			.bt img{
+				width: 60px;
+				height: 60px;
+			}
+			
+			.bt {
+				position: absolute;								
+			}
+			
+			.bt1{
+				
+				bottom: 135px ;
+				left: 17px;
+			}
+			
+			.bt2{
+				bottom: 75px ;
+				left: 17px;
+			}	
+			
+			.bt3{
+				bottom: 15px ;
+				left: 17px;
+			}
+			
+			.bt4{
+				bottom: 135px ;
+				right: 17px;
+			}
+			
+			.bt5{
+				bottom: 75px ;
+				right: 17px;
+			}
+			
+			.bt6{
+				bottom: 15px ;
+				right: 17px;
+			}
+			
+			img{
+				width: 320px;
+				height: 568px;
+			}
+			
+		</style>
+		<script type="text/javascript" src="zijun.js"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				var timer = null;
+				
+				//圖片計數
+				var counter = 0;
+				var str= '';
+				
+				var Tom = document.getElementsByTagName('img')[0];
+				var oBt = document.getElementsByTagName('img'); 				
+
+				for(var i =1 ; i<=6 ;i++ ){
+					
+					//分辨點選按鈕
+					oBt[i].index = i;
+					
+					oBt[i].onclick = function(){
+						if(timer == null){
+							console.log(this.index);
+							timer = setInterval(makeStr,90,this.index);
+						}
+					}					
+				}
+				
+				function makeStr(num){
+					switch(num){
+						case 1:
+							
+							str = 'img2/eat/eat_' + format(counter,2) + '.jpg';							
+							changeView(str);
+							
+							counter++;
+							if(counter > 39){
+								clearInterval(timer);
+								timer = null;
+								counter = 0;
+							}
+							
+							
+						break;
+						
+						case 2:
+							str = 'img2/drink/drink_' + format(counter,2) + '.jpg';							
+							changeView(str);
+							
+							counter++;
+							if(counter > 80){
+								clearInterval(timer);
+								timer = null;
+								counter = 0;
+							}
+						break;
+						
+						case 3:
+							str = 'img2/cymbal/cymbal_' + format(counter,2) + '.jpg';							
+							changeView(str);
+							
+							counter++;
+							if(counter > 12){
+								clearInterval(timer);
+								timer = null;
+								counter = 0;
+							}
+						break;
+						
+						case 4:
+							str = 'img2/scratch/scratch_' + format(counter,2) + '.jpg';							
+							changeView(str);
+							
+							counter++;
+							if(counter > 55){
+								clearInterval(timer);
+								timer = null;
+								counter = 0;
+							}
+						break;
+						
+						case 5:
+							str = 'img2/pie/pie_' + format(counter,2) + '.jpg';							
+							changeView(str);
+							
+							counter++;
+							if(counter > 23){
+								clearInterval(timer);
+								timer = null;
+								counter = 0;
+							}
+						break;
+						
+						case 6:
+							str = 'img2/fart/fart_' + format(counter,2) + '.jpg';							
+							changeView(str);
+							
+							counter++;
+							if(counter > 27){
+								clearInterval(timer);
+								timer = null;
+								counter = 0;
+							}
+						break;
+						
+						
+					}
+				}
+				
+				function format(index, num){
+					var str = counter.toString();
+					while(str.length!=num){
+						str = '0' +str;
+					}
+					return str;
+				}
+				
+				function changeView(str){
+					Tom.src = str;
+					console.log(Tom.src);
+				}	
+			});
+			
+		</script>
+	</head>
+	<body>
+		
+		<div class="box">
+			<img src="img2/angry/angry_00.jpg" id="img"/>
+			<a href="#" class="bt bt1"><img src="img2/Buttons/eat.png"/></a>
+			<a href="#" class="bt bt2"><img src="img2/Buttons/drink.png"/></a>
+			<a href="#" class="bt bt3"><img src="img2/Buttons/cymbal.png"/></a>		
+			<a href="#" class="bt bt4"><img src="img2/Buttons/scratch.png"/></a>			
+			<a href="#" class="bt bt5"><img src="img2/Buttons/pie.png"/></a>
+			<a href="#" class="bt bt6"><img src="img2/Buttons/fart.png"/></a>
+		</div>			
+	</body>
+</html>

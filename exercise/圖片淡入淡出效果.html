@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				width: 700px;
+				opacity: 0.3;
+				filter: alpha(opacity=30);
+			}
+			
+		</style>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oImg = document.getElementsByTagName('img')[0]; 
+				oImg.onmousemove = function(){
+					startMove(100);
+				}
+				
+				oImg.onmouseout = function(){
+					startMove(30);
+				}
+				
+				
+				var timer = null;  //時鐘
+				var alpha = 30;    //默認透明度30
+				
+				
+				function startMove(target){
+
+					clearInterval(timer);
+				
+					// 控制方向
+					var speed = 10;
+						speed = alpha<target ? speed : -speed;
+					
+					timer = setInterval(function(){
+						if(alpha == target){	// 停止
+							clearInterval(timer);
+						} else {	
+							alpha += speed;
+							oImg.style.opacity = alpha/100;
+							oImg.style.filter = 'alpha(opacity=' + alpha + ');';
+						}
+					},100);
+				}
+			}
+		</script>
+		
+	</head>
+	<body>
+		<img src="img/Akali_Splash_0.jpg"/>
+	</body>
+</html>

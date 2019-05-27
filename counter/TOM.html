@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			img{
+				width: 320px;
+				height: 568px;
+			}
+		</style>
+		<script type="text/javascript" src="zijun.js"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				var timer = null;
+				var index = 0;
+				
+				$('bt1').onclick = function(){
+					if(timer == null){
+						timer = setInterval(changeView,90);
+					}
+				}
+				
+				$('bt2').onclick = function(){
+					clearInterval(timer);
+					timer = null;
+				}
+				
+				function changeView(){
+					index++;
+					if(index>25){
+						index = 0;	
+					}
+						
+					$('img').src = 'img2/angry/angry_' + format(index,2) + '.jpg';
+					
+				}
+				
+				/* 格式化操作
+				 * index:數字
+				 * num:位數
+				 */
+				
+				function format(index, num){
+					var str = index.toString();
+					while(str.length!=num){
+						str = '0' +str;
+					}
+					return str;
+				}
+			});
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" value="開始" id= "bt1"/>
+		<input type="button" value="停止" id= "bt2"/><br />
+		<img src="img2/angry/angry_00.jpg" id="img"/>
+	</body>
+</html>

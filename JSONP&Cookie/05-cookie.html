@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script type ="text/javascript">
+			window.onload = function(){
+				bt1.onclick = function(){
+					document.cookie = 'name = Zijun';
+					document.cookie = 'id = 1';
+					alert('儲存數據成功');
+				}
+				
+				bt2.onclick = function(){
+					alert(document.cookie);
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" name="bt1" id="bt1" value="儲存数据" />
+		<input type="button" name="bt2" id="bt2" value="獲取数据" />
+	</body>
+</html>

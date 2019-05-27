@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			i{
+				display: inline-block;
+				width: 50px;
+				height: 20px;
+				background: red;
+				color: white;
+				line-height: 20px;
+				text-align: center;
+			}
+		</style>
+		
+		<script type="text/javascript" src="zijun.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var aI = document.getElementsByTagName('i');
+				
+				setInterval(function(){
+					//倒計時 = 結束時間 - 當前時間
+					
+					//當前時間
+					var time = new Date();
+					var nowTime = time.getTime();
+					
+					//設置結束時間
+					//10月15日12點0分0秒
+					time.setMonth(7);
+					time.setDate(18);
+					time.setHours(12);
+					time.setMinutes(0);
+					time.setSeconds(0);
+					
+					var endTime = time.getTime(); 
+					
+					//倒計時:差值
+					var offsetTime = (endTime - nowTime) / 1000;
+					var s = parseInt(offsetTime % 60);
+					var m = parseInt(offsetTime / 60 % 60);
+					var h = parseInt(offsetTime / 60 / 60);
+					
+					aI[0].innerHTML = h;
+					aI[1].innerHTML = m;
+					aI[2].innerHTML = s;
+					
+				},1000);
+			});
+		</script>
+		
+	</head>
+	<body>
+		<i></i> : <i></i> : <i></i>
+	</body>
+</html>

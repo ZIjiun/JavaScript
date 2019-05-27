@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<style type="text/css">
+		*{
+			margin:0 ;
+			padding: 0;
+		}
+		
+		ul{
+			list-style: none;
+			width: 135px;
+			margin: 50px;
+			height: 27px;
+		}
+		
+		li{
+			float: left;
+			width: 27px;
+			height: 27px;
+			background: url(img/star.gif);
+		}	
+		
+		.active{
+			background-position-y: -29px;
+		}
+		
+	</style>
+	
+	<script type="text/javascript" src="../code/zyz.js"></script>	
+	<script type="text/javascript">
+		
+		$(function(){
+				var aLi = document.getElementsByTagName('li');
+				var oInfo = document.getElementsByTagName('p')[0];
+				
+				var current = -1;
+				
+				for(var i=0; i<aLi.length; i++){
+					
+					aLi[i].index = i;
+					
+					aLi[i].onmouseover = function(){
+						for(var j=0; j<aLi.length;j++){
+							if(j <= this.index){
+								aLi[j].className = 'active';	
+							}else{
+								aLi[j].className = '';
+							}
+						}
+					}
+					
+					aLi[i].onmouseout = function(){
+						//有評分 當下以及之前的燈點亮
+						//沒評分 所有燈關閉
+						for(var j=0; j<aLi.length; j++){
+							if(j<=current){
+								aLi[j].className = 'active';	
+							}else{
+								aLi[j].className = ' ';
+							}
+						}
+					}
+				
+					aLi[i].onclick = function(){
+						for(var j=0; j<=this.index; j++){
+							current = this.index;
+						}
+						oInfo.innerHTML= (current+1)+'顆星';
+					}
+				}
+		});
+		
+	</script>
+	
+	
+	<body>
+		<div id="view">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			
+			<p></p>
+		</div>
+		
+	</body>
+</html>
