@@ -1,10 +1,17 @@
 # JavaScript
 
-  ¡Estring   		¦r¦ê³B²z¤èªk
-  ¡Ecounter 		©w®É¾¹À³¥Î
-  ¡EDOM      		DOM¾Ş§@³B²zÀ³¥Î
-  ¡EDOM&BOM  		DOM&BOM¾Ş§@³B²z
-  ¡Eevent    		¨Æ¥ó³B²z
-  ¡Eexercise 		¤¸¯À¹B°Ê³B²z
-  ¡EAjax     		Ajax³B²z
-  ¡EJSONP&Cookie  	JSONP&Cookie³B²z¡BÀ³¥Î
+  1.string   		å­—ä¸²è™•ç†æ–¹æ³•
+  
+  2.counter 		å®šæ™‚å™¨æ‡‰ç”¨
+  
+  3.DOM      		DOMæ“ä½œè™•ç†æ‡‰ç”¨
+  
+  4.DOM&BOM  		DOM&BOMæ“ä½œè™•ç†
+  
+  5.event    		äº‹ä»¶è™•ç†
+  
+  6.exercise 		å…ƒç´ é‹å‹•è™•ç†
+  
+  7.Ajax     		Ajaxè™•ç†
+  
+  8.JSONP&Cookie  	JSONP&Cookieè™•ç†ã€æ‡‰ç”¨
